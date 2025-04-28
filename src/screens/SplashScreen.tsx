@@ -1,0 +1,46 @@
+import React, {useEffect} from 'react';
+import {View, StyleSheet, Dimensions} from 'react-native';
+import LottieView from 'lottie-react-native';
+import {useNavigation} from '@react-navigation/native';
+import {StackParamList} from '../types/navigation';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+
+const {width: screenWidth} = Dimensions.get('window');
+
+const SplashScreen = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+        navigation.replace('Tabs');
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [navigation]);
+
+  return (
+    <View style={styles.container}>
+      <LottieView
+        source={require('../assets/animations/AnimationSplash.json')}
+        autoPlay
+        loop={false}
+        style={styles.animation}
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+  },
+  animation: {
+    width: screenWidth * 0.5,
+    height: screenWidth * 0.5,
+  },
+});
+
+export default SplashScreen; 

@@ -1,6 +1,6 @@
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export type StackParamList = {
+  Splash: undefined;
   GetStarted: undefined;
   Onboarding: undefined;
   Paywall: undefined;

@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import GetStartedScreen from '../screens/GetStartedScreen';
 import OnboardingScreen from '../screens/OnboardingScreen';
 import PaywallScreen from '../screens/PaywallScreen';
+import SplashScreen from '../screens/SplashScreen';
 import {useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
 import TabsNavigator from './TabNavigator';
@@ -18,7 +19,8 @@ const StackNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}>
-       {!onboardingCompleted ? (
+      <Stack.Screen name="Splash" component={SplashScreen} />
+      {!onboardingCompleted ? (
         <>
           <Stack.Screen name="GetStarted" component={GetStartedScreen} />
           <Stack.Screen name="Onboarding" component={OnboardingScreen} />

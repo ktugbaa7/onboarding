@@ -16,7 +16,7 @@ import MessageIcon from '../assets/icons/MessageIcon';
 import RightArrow from '../assets/icons/RigthArrow';
 import {BlurView} from '@react-native-community/blur';
 import {getCategories, getQuestions} from '../api/api';
-import {Category, Question} from '../api/apiTypes';
+import {Category, Question} from '../types/apiTypes';
 import Loading from '../components/Loading';
 
 const {width: screenWidth} = Dimensions.get('window');

@@ -1,11 +1,9 @@
 import axios from 'axios';
 import {API_URL} from '@env';
 import {
-  Category,
-  Question,
   QuestionsResponse,
   CategoriesResponse,
-} from './apiTypes';
+} from '../types/apiTypes';
 
 const BASE_URL = process.env.API_URL;
 

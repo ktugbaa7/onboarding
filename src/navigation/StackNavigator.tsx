@@ -4,6 +4,7 @@ import GetStartedScreen from '../screens/GetStartedScreen';
 import OnboardingScreen from '../screens/OnboardingScreen';
 import PaywallScreen from '../screens/PaywallScreen';
 import SplashScreen from '../screens/SplashScreen';
+import NotFoundScreen from '../screens/NotFoundScreen';
 import {useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
 import TabsNavigator from './TabNavigator';
@@ -29,6 +30,7 @@ const StackNavigator = () => {
       ) : (
         <Stack.Screen name="Tabs" component={TabsNavigator} />
       )}
+      <Stack.Screen name="NotFound" component={NotFoundScreen} />
     </Stack.Navigator>
   );
 };

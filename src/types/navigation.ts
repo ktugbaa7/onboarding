@@ -1,10 +1,10 @@
-
 export type StackParamList = {
   Splash: undefined;
   GetStarted: undefined;
   Onboarding: undefined;
   Paywall: undefined;
   Tabs: undefined;
+  NotFound: undefined;
 };
 
 export type TabParamList = {
@@ -12,6 +12,7 @@ export type TabParamList = {
   Diagnose: undefined;
   'My Garden': undefined;
   Profile: undefined;
+  Scan: undefined;
 };
 
 export type RootStackParamList = {
@@ -19,6 +20,7 @@ export type RootStackParamList = {
   Paywall: undefined;
   Home: undefined;
   Tabs: undefined;
+  NotFound: undefined;
 };
 
 export type OnboardingScreenNavigationProp = {

@@ -52,7 +52,7 @@ const OnboardingScreen: React.FC<Props> = ({navigation}) => {
       />
       <View style={styles.content}>
         {current === 1 ? (
-          <View style={styles.slide2Container}>
+          <View style={styles.slideContainer}>
             <Image
               source={require('../assets/artwork.png')}
               style={styles.artwork}
@@ -81,10 +81,10 @@ const OnboardingScreen: React.FC<Props> = ({navigation}) => {
       <View style={styles.footer}>
         <PrimaryButton title="Continue" onPress={handleNext} />
         <View style={styles.dotsContainer}>
-          {slides.map((_, idx) => (
+          {slides.map((_, index) => (
             <View
-              key={idx}
-              style={[styles.dot, current === idx && styles.activeDot]}
+              key={index}
+              style={[styles.dot, current === index && styles.activeDot]}
             />
           ))}
         </View>
@@ -104,22 +104,21 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   content: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
     marginTop: 40,
   },
   imageTitle: {
-    width: screenWidth * 0.9,
+    width: '100%',
     aspectRatio: 5,
     alignSelf: 'flex-start',
     marginLeft: 8,
   },
   image: {
-    width: screenWidth * 0.9,
+    width: '100%',
     aspectRatio: 1,
-    height: screenHeight * 0.7,
-    marginBottom: screenHeight * 0.2,
-    alignSelf: 'center',
-    borderRadius: 16,
+    height: '100%',
   },
   title: {
     fontSize: 24,
@@ -135,19 +134,16 @@ const styles = StyleSheet.create({
   },
   footer: {
     width: '100%',
-    position: 'absolute',
-    bottom: 15,
     paddingTop: 16,
     zIndex: 100,
+    flexDirection: 'column',
+    alignItems: 'center',
   },
-  slide2Container: {
+  slideContainer: {
     width: screenWidth * 0.9,
     height: screenHeight * 0.7,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
     position: 'relative',
-    marginBottom: screenHeight * 0.07,
+    bottom: -50,
   },
   artwork: {
     position: 'absolute',

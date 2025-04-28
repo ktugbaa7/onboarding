@@ -6,6 +6,7 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
+  StatusBar,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -16,13 +17,14 @@ import RightArrow from '../assets/icons/RigthArrow';
 import {BlurView} from '@react-native-community/blur';
 import {getCategories, getQuestions} from '../api/api';
 import {Category, Question} from '../api/apiTypes';
+import Loading from '../components/Loading';
 
 const {width: screenWidth} = Dimensions.get('window');
 
 const HomeScreen = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     fetchQuestions();
@@ -49,8 +51,13 @@ const HomeScreen = () => {
     }
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" />
       <ScrollView
         style={styles.scrollView}
         showsVerticalScrollIndicator={false}>
@@ -113,7 +120,7 @@ const HomeScreen = () => {
         </View>
         <View style={styles.categoriesContainer}>
           <View style={styles.categoriesGrid}>
-            {categories.map((category) => (
+            {categories.map(category => (
               <TouchableOpacity key={category.id} style={styles.categoryCard}>
                 <Image
                   source={{uri: category.image.url}}

@@ -29,7 +29,7 @@ const features = [
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const PaywallScreen: React.FC<Props> = ({navigation}) => {
-  const [selectedOption, setSelectedOption] = useState('year');
+  const [selectedOption, setSelectedOption] = useState<string>('year');
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" />
@@ -83,19 +83,9 @@ const PaywallScreen: React.FC<Props> = ({navigation}) => {
                 ]}
               />
               <View style={styles.textContainer}>
-                <Text
-                  style={[
-                    styles.priceTitle,
-                    selectedOption === 'month' && styles.priceTitleActive,
-                  ]}>
-                  1 Month
-                </Text>
-                <Text
-                  style={[
-                    styles.priceDesc,
-                    selectedOption === 'month' && styles.priceDescActive,
-                  ]}>
-                  $2.99/month
+                <Text style={[styles.priceTitle]}>1 Month</Text>
+                <Text style={[styles.priceDesc]}>
+                  $2.99/month, auto renewable
                 </Text>
               </View>
             </View>
@@ -115,21 +105,11 @@ const PaywallScreen: React.FC<Props> = ({navigation}) => {
               />
               <View style={styles.textContainer}>
                 <View style={styles.rowBetween}>
-                  <Text
-                    style={[
-                      styles.priceTitle,
-                      selectedOption === 'year' && styles.priceTitleActive,
-                    ]}>
-                    1 Year
-                  </Text>
+                  <Text style={[styles.priceTitle]}>1 Year</Text>
                   <Text style={styles.saveText}>Save 50%</Text>
                 </View>
-                <Text
-                  style={[
-                    styles.priceDesc,
-                    selectedOption === 'year' && styles.priceDescActive,
-                  ]}>
-                  3 days free, then $29.99/year
+                <Text style={[styles.priceDesc]}>
+                  First 3 days free, then $529,99/year
                 </Text>
               </View>
             </View>
@@ -141,13 +121,13 @@ const PaywallScreen: React.FC<Props> = ({navigation}) => {
           style={styles.button}
           textStyle={styles.buttonText}
         />
-        <View>
-          <Text style={styles.footerText}>
-            After the 3-day free trial period you'll be charged ₺274.99 per year
-            unless you cancel before the trial expires. Yearly Subscription is
-            Auto-Renewable
-          </Text>
-        </View>
+
+        <Text style={styles.footerText}>
+          After the 3-day free trial period you'll be charged ₺274.99 per year
+          unless you cancel before the trial expires. Yearly Subscription is
+          Auto-Renewable
+        </Text>
+
         <View style={styles.footerRow}>
           <Text style={styles.footerLink}>Terms</Text>
           <Text style={styles.footerDot}>•</Text>
@@ -269,16 +249,11 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#FFFFFF',
   },
-  priceTitleActive: {
-    color: '#FFFFFF',
-  },
   priceDesc: {
-    fontSize: 14,
-    color: '#A1A1AA',
-    marginTop: 4,
-  },
-  priceDescActive: {
+    fontSize: 12,
+    fontWeight: '300',
     color: '#FFFFFF',
+    marginTop: 4,
   },
   saveText: {
     backgroundColor: '#28AF6E',
@@ -308,11 +283,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 16,
+    marginTop: 6,
   },
   footerLink: {
     color: '#B6C9A6',
-    fontSize: 12,
+    fontSize: 11,
+    fontWeight: '400',
     marginHorizontal: 4,
   },
   footerDot: {

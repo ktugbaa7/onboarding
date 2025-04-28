@@ -1,6 +1,5 @@
 import {
   View,
-  Text,
   StyleSheet,
   Image,
   ScrollView,
@@ -18,6 +17,7 @@ import {BlurView} from '@react-native-community/blur';
 import {getCategories, getQuestions} from '../api/api';
 import {Category, Question} from '../types/apiTypes';
 import Loading from '../components/Loading';
+import {CustomText} from '../components/Text';
 
 const {width: screenWidth} = Dimensions.get('window');
 
@@ -63,13 +63,17 @@ const HomeScreen = () => {
         showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.greeting}>Hi, plant lover!</Text>
-            <Text style={styles.name}>Good Afternoon! ⛅</Text>
+            <CustomText variant="regular" style={styles.greeting}>
+              Hi, plant lover!
+            </CustomText>
+            <CustomText variant="medium" style={styles.name}>
+              Good Afternoon! ⛅
+            </CustomText>
           </View>
         </View>
         <View style={styles.searchContent}>
           <Image
-            source={require('../assets/home.png')}
+            source={require('../assets/images/home.png')}
             style={styles.searchBg}
           />
           <View style={styles.searchContainer}>
@@ -85,17 +89,21 @@ const HomeScreen = () => {
           <View style={styles.premiumContent}>
             <MessageIcon />
             <View style={styles.premiumContentText}>
-              <Text style={styles.premiumText}>FREE Premium Available</Text>
-              <Text style={styles.premiumSubText}>
+              <CustomText variant="semiBold" style={styles.premiumText}>
+                FREE Premium Available
+              </CustomText>
+              <CustomText variant="light" style={styles.premiumSubText}>
                 Tap to upgrade your account!
-              </Text>
+              </CustomText>
             </View>
           </View>
           <RightArrow />
         </TouchableOpacity>
 
         <View style={styles.featuredContainer}>
-          <Text style={styles.sectionTitle}>Get Started</Text>
+          <CustomText variant="semiBold" style={styles.sectionTitle}>
+            Get Started
+          </CustomText>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -112,7 +120,9 @@ const HomeScreen = () => {
                   blurAmount={40}
                   reducedTransparencyFallbackColor="transparent"
                   overlayColor="transparent">
-                  <Text style={styles.plantName}>{question.title}</Text>
+                  <CustomText variant="medium" style={styles.plantName}>
+                    {question.title}
+                  </CustomText>
                 </BlurView>
               </TouchableOpacity>
             ))}
@@ -126,7 +136,9 @@ const HomeScreen = () => {
                   source={{uri: category.image.url}}
                   style={styles.categoryImage}
                 />
-                <Text style={styles.categoryName}>{category.title}</Text>
+                <CustomText variant="medium" style={styles.categoryName}>
+                  {category.title}
+                </CustomText>
               </TouchableOpacity>
             ))}
           </View>
@@ -200,12 +212,10 @@ const styles = StyleSheet.create({
   },
   premiumText: {
     fontSize: 16,
-    fontWeight: '600',
     color: '#E5C990',
   },
   premiumSubText: {
     fontSize: 13,
-    fontWeight: '300',
     color: '#F5C25B',
   },
   searchBg: {
@@ -227,7 +237,6 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 20,
-    fontWeight: '600',
     color: '#000000',
     marginBottom: 16,
     paddingHorizontal: 24,
@@ -256,10 +265,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     backgroundColor: 'transparent',
     height: '40%',
+    justifyContent: 'center',
   },
   plantName: {
     fontSize: 15,
-    fontWeight: '500',
     color: '#FFFFFF',
     paddingHorizontal: 10,
   },
@@ -289,7 +298,6 @@ const styles = StyleSheet.create({
   },
   categoryName: {
     fontSize: 16,
-    fontWeight: '500',
     color: '#000000',
     marginBottom: 4,
     position: 'absolute',

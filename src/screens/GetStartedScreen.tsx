@@ -3,6 +3,7 @@ import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {OnboardingScreenNavigationProp} from '../types/navigation';
 import PrimaryButton from '../components/PrimaryButton';
+import {CustomText} from '../components/Text';
 
 interface Props {
   navigation: OnboardingScreenNavigationProp;
@@ -12,16 +13,23 @@ const GetStartedScreen: React.FC<Props> = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>
-          Welcome to <Text style={styles.bold}>PlantApp</Text>
-        </Text>
-        <Text style={styles.subtitle}>Identify more than 3000+ plants and</Text>
-        <Text style={styles.subtitle}>88% accuracy.</Text>
+        <CustomText variant="regular" style={styles.title}>
+          Welcome to{' '}
+          <CustomText variant="bold" style={styles.bold}>
+            PlantApp
+          </CustomText>
+        </CustomText>
+        <CustomText variant="regular" style={styles.subtitle}>
+          Identify more than 3000+ plants and
+        </CustomText>
+        <CustomText variant="regular" style={styles.subtitle}>
+          88% accuracy.
+        </CustomText>
       </View>
 
       <View style={styles.imageContainer}>
         <Image
-          source={require('../assets/Frame1.png')}
+          source={require('../assets/images/Frame1.png')}
           style={styles.image}
           resizeMode="contain"
         />
@@ -33,13 +41,13 @@ const GetStartedScreen: React.FC<Props> = ({navigation}) => {
           onPress={() => navigation.navigate('Onboarding')}
         />
         <View style={styles.footerBottom}>
-          <Text style={styles.footerText}>
+          <CustomText variant="regular" style={styles.footerText}>
             By tapping next, you are agreeing to PlantID
-          </Text>
-          <Text style={styles.footerText}>
+          </CustomText>
+          <CustomText variant="regular" style={styles.footerText}>
             <Text style={styles.link}>Terms of Use </Text>&
             <Text style={styles.link}> Privacy Policy</Text>.
-          </Text>
+          </CustomText>
         </View>
       </View>
     </SafeAreaView>
@@ -61,16 +69,15 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    fontWeight: '400',
     marginBottom: 12,
   },
   bold: {
-    fontWeight: '700',
+    fontSize: 28,
   },
   subtitle: {
     fontSize: 16,
     color: '#555',
-    marginBottom: 4,
+    marginBottom: 1,
   },
   imageContainer: {
     flex: 1,

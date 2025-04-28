@@ -1,20 +1,25 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {StackParamList} from '../types/navigation';
 import PrimaryButton from '../components/PrimaryButton';
+import {CustomText} from '../components/Text';
 
 const NotFoundScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>404</Text>
-      <Text style={styles.subtitle}>Sayfa Bulunamadı</Text>
-      <Text style={styles.description}>
+      <CustomText variant="bold" style={styles.title}>
+        404
+      </CustomText>
+      <CustomText variant="semiBold" style={styles.subtitle}>
+        Sayfa Bulunamadı
+      </CustomText>
+      <CustomText variant="regular" style={styles.description}>
         Aradığınız sayfa mevcut değil veya taşınmış olabilir.
-      </Text>
+      </CustomText>
       <PrimaryButton
         title="Ana Sayfaya Dön"
         style={styles.button}
@@ -35,13 +40,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 72,
-    fontWeight: 'bold',
     color: '#28AF6E',
     marginBottom: 10,
   },
   subtitle: {
     fontSize: 24,
-    fontWeight: '600',
     color: '#333333',
     marginBottom: 10,
   },

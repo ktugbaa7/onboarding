@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Image,
   FlatList,
@@ -16,6 +15,7 @@ import PrimaryButton from '../components/PrimaryButton';
 import UnlimitedIcon from '../assets/icons/UnlimitedIcon';
 import FasterIcon from '../assets/icons/FasterIcon';
 import CloseIcon from '../assets/icons/CloseIcon';
+import {CustomText} from '../components/Text';
 
 interface Props {
   navigation: OnboardingScreenNavigationProp;
@@ -41,17 +41,22 @@ const PaywallScreen: React.FC<Props> = ({navigation}) => {
       </TouchableOpacity>
 
       <Image
-        source={require('../assets/Image.png')}
+        source={require('../assets/images/Image.png')}
         style={styles.backgroundImage}
         resizeMode="contain"
       />
 
       <View style={styles.overlay}>
         <View style={styles.topSection}>
-          <Text style={styles.title}>
-            PlantApp <Text style={styles.bold}>Premium</Text>
-          </Text>
-          <Text style={styles.subtitle}>Access All Features</Text>
+          <CustomText variant="bold" style={styles.title}>
+            PlantApp{' '}
+            <CustomText variant="light" style={styles.bold}>
+              Premium
+            </CustomText>
+          </CustomText>
+          <CustomText variant="light" style={styles.subtitle}>
+            Access All Features
+          </CustomText>
         </View>
 
         <FlatList
@@ -63,8 +68,12 @@ const PaywallScreen: React.FC<Props> = ({navigation}) => {
           renderItem={({item}) => (
             <View style={styles.featureBox}>
               {item.icon}
-              <Text style={styles.featureTitle}>{item.title}</Text>
-              <Text style={styles.featureDesc}>{item.desc}</Text>
+              <CustomText variant="medium" style={styles.featureTitle}>
+                {item.title}
+              </CustomText>
+              <CustomText variant="regular" style={styles.featureDesc}>
+                {item.desc}
+              </CustomText>
             </View>
           )}
         />
@@ -83,10 +92,12 @@ const PaywallScreen: React.FC<Props> = ({navigation}) => {
                 ]}
               />
               <View style={styles.textContainer}>
-                <Text style={[styles.priceTitle]}>1 Month</Text>
-                <Text style={[styles.priceDesc]}>
+                <CustomText variant="semiBold" style={[styles.priceTitle]}>
+                  1 Month
+                </CustomText>
+                <CustomText variant="light" style={[styles.priceDesc]}>
                   $2.99/month, auto renewable
-                </Text>
+                </CustomText>
               </View>
             </View>
           </TouchableOpacity>
@@ -105,12 +116,16 @@ const PaywallScreen: React.FC<Props> = ({navigation}) => {
               />
               <View style={styles.textContainer}>
                 <View style={styles.rowBetween}>
-                  <Text style={[styles.priceTitle]}>1 Year</Text>
-                  <Text style={styles.saveText}>Save 50%</Text>
+                  <CustomText variant="semiBold" style={[styles.priceTitle]}>
+                    1 Year
+                  </CustomText>
+                  <CustomText variant="medium" style={styles.saveText}>
+                    Save 50%
+                  </CustomText>
                 </View>
-                <Text style={[styles.priceDesc]}>
+                <CustomText variant="light" style={[styles.priceDesc]}>
                   First 3 days free, then $529,99/year
-                </Text>
+                </CustomText>
               </View>
             </View>
           </TouchableOpacity>
@@ -122,18 +137,16 @@ const PaywallScreen: React.FC<Props> = ({navigation}) => {
           textStyle={styles.buttonText}
         />
 
-        <Text style={styles.footerText}>
+        <CustomText variant="light" style={styles.footerText}>
           After the 3-day free trial period you'll be charged ₺274.99 per year
           unless you cancel before the trial expires. Yearly Subscription is
           Auto-Renewable
-        </Text>
+        </CustomText>
 
         <View style={styles.footerRow}>
-          <Text style={styles.footerLink}>Terms</Text>
-          <Text style={styles.footerDot}>•</Text>
-          <Text style={styles.footerLink}>Privacy</Text>
-          <Text style={styles.footerDot}>•</Text>
-          <Text style={styles.footerLink}>Restore</Text>
+          <CustomText variant="regular" style={styles.footerLink}>
+            Terms • Privacy • Restore
+          </CustomText>
         </View>
       </View>
     </SafeAreaView>
@@ -165,16 +178,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     color: '#FFFFFF',
-    fontWeight: '800',
   },
   bold: {
-    fontWeight: '300',
+    fontSize: 30,
   },
   subtitle: {
     fontSize: 17,
-    color: '#fff',
-    marginTop: 8,
-    fontWeight: '300',
+    color: '#FFFFFFB2',
   },
   featuresRow: {
     marginVertical: 24,
@@ -191,15 +201,12 @@ const styles = StyleSheet.create({
   },
   featureTitle: {
     color: '#fff',
-    fontWeight: '500',
     fontSize: 20,
-    marginTop: 20,
+    marginTop: 14,
   },
   featureDesc: {
     color: '#fff',
     fontSize: 13,
-    marginTop: 4,
-    fontWeight: '400',
   },
   pricingColumn: {
     flexDirection: 'column',
@@ -246,19 +253,16 @@ const styles = StyleSheet.create({
   },
   priceTitle: {
     fontSize: 18,
-    fontWeight: '600',
     color: '#FFFFFF',
   },
   priceDesc: {
     fontSize: 12,
-    fontWeight: '300',
     color: '#FFFFFF',
-    marginTop: 4,
+    lineHeight: 10,
   },
   saveText: {
     backgroundColor: '#28AF6E',
     color: '#fff',
-    fontWeight: '500',
     fontSize: 12,
     position: 'absolute',
     right: -10,
@@ -288,19 +292,12 @@ const styles = StyleSheet.create({
   footerLink: {
     color: '#B6C9A6',
     fontSize: 11,
-    fontWeight: '400',
     marginHorizontal: 4,
-  },
-  footerDot: {
-    color: '#B6C9A6',
-    fontSize: 12,
-    marginHorizontal: 2,
   },
   footerText: {
     color: '#FFFFFF85',
     fontSize: 9,
     textAlign: 'center',
-    fontWeight: '300',
   },
   closeButton: {
     position: 'absolute',

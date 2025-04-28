@@ -15,18 +15,18 @@ const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 const slides = [
   {
     key: 'slide1',
-    title: require('../assets/Title.png'),
-    image: require('../assets/Content.png'),
+    title: require('../assets/images/Title.png'),
+    image: require('../assets/images/Content.png'),
   },
   {
     key: 'slide2',
-    title: require('../assets/Title2.png'),
-    image: require('../assets/iphone.png'),
+    title: require('../assets/images/Title2.png'),
+    image: require('../assets/images/iphone.png'),
   },
   {
     key: 'slide3',
-    title: require('../assets/Title.png'),
-    image: require('../assets/Content.png'),
+    title: require('../assets/images/Title.png'),
+    image: require('../assets/images/Content.png'),
   },
 ];
 
@@ -54,17 +54,17 @@ const OnboardingScreen: React.FC<Props> = ({navigation}) => {
         {current === 1 ? (
           <View style={styles.slideContainer}>
             <Image
-              source={require('../assets/artwork.png')}
+              source={require('../assets/images/artwork.png')}
               style={styles.artwork}
               resizeMode="contain"
             />
             <Image
-              source={require('../assets/iphone.png')}
+              source={require('../assets/images/iphone.png')}
               style={styles.phoneImage}
               resizeMode="contain"
             />
             <Image
-              source={require('../assets/img.png')}
+              source={require('../assets/images/img.png')}
               style={styles.sticker}
               resizeMode="contain"
               blurRadius={20}

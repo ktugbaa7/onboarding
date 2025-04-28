@@ -1,5 +1,6 @@
 import React from 'react';
-import {TouchableOpacity, Text, StyleSheet, ViewStyle, TextStyle} from 'react-native';
+import {TouchableOpacity, StyleSheet, ViewStyle, TextStyle} from 'react-native';
+import {CustomText} from './Text';
 
 interface Props {
   title: string;
@@ -9,15 +10,22 @@ interface Props {
   disabled?: boolean;
 }
 
-const PrimaryButton: React.FC<Props> = ({title, onPress, style, textStyle, disabled}) => {
+const PrimaryButton: React.FC<Props> = ({
+  title,
+  onPress,
+  style,
+  textStyle,
+  disabled,
+}) => {
   return (
     <TouchableOpacity
       style={[styles.button, style, disabled && styles.disabled]}
       onPress={onPress}
       activeOpacity={0.7}
-      disabled={disabled}
-    >
-      <Text style={[styles.buttonText, textStyle]}>{title}</Text>
+      disabled={disabled}>
+      <CustomText variant="bold" style={[styles.buttonText, textStyle]}>
+        {title}
+      </CustomText>
     </TouchableOpacity>
   );
 };
@@ -36,10 +44,10 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '600',
   },
   disabled: {
     opacity: 0.5,
   },
-}); 
+});

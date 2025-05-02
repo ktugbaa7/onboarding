@@ -1,11 +1,10 @@
 import axios from 'axios';
-import {API_URL} from '@env';
 import {
   QuestionsResponse,
   CategoriesResponse,
 } from '../types/apiTypes';
 
-const BASE_URL = process.env.API_URL;
+const BASE_URL = 'https://dummy-api-jtg6bessta-ey.a.run.app';
 
 export const getCategories = async (): Promise<CategoriesResponse> => {
   try {

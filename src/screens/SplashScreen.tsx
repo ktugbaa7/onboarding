@@ -4,19 +4,27 @@ import LottieView from 'lottie-react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackParamList} from '../types/navigation';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useSelector} from 'react-redux';
+import {RootState} from '../redux/store';
 
 const {width: screenWidth} = Dimensions.get('window');
 
 const SplashScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>();
-
+  const onboardingCompleted = useSelector(
+    (state: RootState) => state.onboarding.completed,
+  );
   useEffect(() => {
     const timer = setTimeout(() => {
+      if (onboardingCompleted) {
         navigation.replace('Tabs');
+      } else {
+        navigation.replace('GetStarted');
+      }
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, [navigation]);
+  }, [navigation, onboardingCompleted]);
 
   return (
     <View style={styles.container}>
